@@ -1,0 +1,9 @@
+Your task is to create a custom argument matcher that matches a Person object based on a provided age range. 
+The matcher should return true if the age of the Person object is within the specified range, inclusive.
+
+
+Define a class Person with at least one field: int age.
+
+Implement a custom argument matcher that matches Person objects within a given age range.
+
+Use the matcher in a test case to verify that a mock method is called with a Person of the correct age.
