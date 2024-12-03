@@ -1,3 +1,4 @@
+DONE 
 4.1 Your task is to create a custom argument matcher that matches a Person object based on a provided age range.
 The matcher should return true if the age of the Person object is within the specified range, inclusive.
 
@@ -9,13 +10,16 @@ Use the matcher in a test case to verify that a mock method is called with a Per
 
 
 
-4.2 You are testing a UserService that relies on a UserRepository. You need to ensure that the mock UserRepository:
+4.2 You are testing a UserService that relies on a UserRepository. 
+
+You need to ensure that the mock UserRepository:
 
 Is serializable.
 
 Has a default answer that logs unstubbed method invocations.
 
 Captures method invocation details for debugging purposes.
+
 
 
 Create a mock UserRepository with the following requirements:
@@ -31,3 +35,24 @@ Write at least two test cases that use this mock:
 The first test should invoke a stubbed method and assert the expected behavior.
 
 The second test should invoke an unstubbed method and verify that the default answer is applied and the invocation details are recorded.
+
+(Подсказка: дефолтна відповідь може бути тільки одна, і якщо тобі треба більше ніж одна дефолтна, то можливо слід розглянути інші інструменти, які краще для цього підходять - Argument Matchers.
+
+        UserRepository userRepositoryMock = mock(UserRepository.class,
+                withSettings()
+                        .defaultAnswer(invocation -> {
+                            if (invocation.getMethod().getReturnType().equals(int.class)) {
+                                return -1;
+                            }
+                            if (invocation.getMethod().getReturnType().equals(String.class)) {
+                                return "Default answer";
+                            }
+                            if (invocation.getMethod().getReturnType().equals(User.class)) {
+                                return new User(1, "john", "qwerty");
+                            }
+
+                            return "Default answer";
+                        }));
+
+
+)
