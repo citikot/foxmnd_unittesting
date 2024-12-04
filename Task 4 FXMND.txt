@@ -56,3 +56,36 @@ The second test should invoke an unstubbed method and verify that the default an
 
 
 )
+
+
+
+4.3 You are provided with a PaymentProcessor class that interacts with a BankService. 
+Your task is to write a unit test for the PaymentProcessor.processPayment() method to ensure that 
+it correctly handles successful payment processing. You need to spy on the BankService to prevent 
+the actual bank communication and verify that processPayment() behaves as expected when the bank 
+service indicates a successful payment.
+
+
+Setup:
+
+BankService class with a method boolean performPayment(AccountDetails details, BigDecimal amount).
+
+PaymentProcessor class with a method processPayment(AccountDetails details, BigDecimal amount) 
+that calls BankService.performPayment().
+
+
+Task:
+
+
+Create a test class named PaymentProcessorTest.
+
+Write a test method named testProcessPaymentSuccess.
+
+Within the test method, create a spy of BankService.
+
+Stub the performPayment method to return true to simulate a successful payment scenario.
+
+Call processPayment from PaymentProcessor.
+
+Verify that processPayment was called exactly once and that it processed the payment successfully.
+
