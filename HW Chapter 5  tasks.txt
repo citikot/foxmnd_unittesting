@@ -1,0 +1,34 @@
+5.1 Exercise
+You have a class NotificationService with a void method sendAlert(String message). 
+This method sends an alert message to an operations team. The sending process 
+involves two steps: validating the message and then sending it through an alerting mechanism. 
+If the message is null or empty, a custom InvalidAlertException should be thrown.
+
+public class NotificationService {
+    private AlertGateway gateway;
+
+    public NotificationService(AlertGateway gateway) {
+        this.gateway = gateway;
+    }
+
+    public void sendAlert(String message) {
+        if (message == null || message.trim().isEmpty()) {
+            throw new InvalidAlertException("Alert message is invalid");
+        }
+        gateway.send(message);
+    }
+}
+
+
+Task:
+
+Write a Mockito-based unit test for the sendAlert method that verifies the following:
+
+The send method on the gateway is called with the correct message when sendAlert is invoked with a valid message.
+
+An InvalidAlertException is thrown when sendAlert is invoked with a null message.
+
+The send method on the gateway is never called when an InvalidAlertException is thrown.
+
+
+
