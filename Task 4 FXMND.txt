@@ -1,5 +1,4 @@
-DONE 
-4.1 Your task is to create a custom argument matcher that matches a Person object based on a provided age range.
+DONE 4.1 Your task is to create a custom argument matcher that matches a Person object based on a provided age range.
 The matcher should return true if the age of the Person object is within the specified range, inclusive.
 
 Define a class Person with at least one field: int age.
@@ -10,7 +9,8 @@ Use the matcher in a test case to verify that a mock method is called with a Per
 
 
 
-4.2 You are testing a UserService that relies on a UserRepository. 
+4.2 Exercise
+You are testing a UserService that relies on a UserRepository. 
 
 You need to ensure that the mock UserRepository:
 
@@ -58,8 +58,21 @@ The second test should invoke an unstubbed method and verify that the default an
 )
 
 
+Serhii Suchok “Mentor” Прошу дати мені чарівний пендаль, як робити завдання. Як створювати сервіс та репозиторій? Що там повинно бути? Чи це просто два класи, сервіс залежить від репозиторію, в сервісі є два методи processSomething1 та 2 де ми викликаємо методи за репозиторію getSomething1 та 2, які щось повертають, наприклад, одиницю. Ми робимо стаб для getSomething1 і не робимо для 2. Потім викликаємо 1,отримуємо застабовану одиницю, викликаємо 2 і отримуємо дефолтну відповіть. Та перевіряємо потім те, що треба в умовах завдання. Я правильно мислю?
 
-4.3 You are provided with a PaymentProcessor class that interacts with a BankService. 
+Вітаю, Олександре. Так, твій підхід цілком логічний. Ідея в тому, що тобі потрібно мати два класи: 
+сервіс (UserService) та репозиторій (UserRepository). Сервіс використовує репозиторій для отримання даних.
+Що ми хочемо досягти:
+
+Створити серіалізований мок репозиторію.
+Коли викликаються методи, для яких не налаштовано when(...).thenReturn(...) чи іншу поведінку, 
+замість звичайної RETURNS_DEFAULTS або RETURNS_MOCK ти можеш зробити так, що вони будуть логувати виклик у консоль.
+Додати "слухач" викликів (invocation listener), що буде записувати кожен виклик (назву методу та аргументи) в якийсь список.
+Таким чином ти продемонструєш, що стабовані та нестабовані виклики поводять себе по-різному, 
+при цьому нестабовані логуються, а стабовані повертають передбачені значення.
+
+4.3 Exercise 
+You are provided with a PaymentProcessor class that interacts with a BankService. 
 Your task is to write a unit test for the PaymentProcessor.processPayment() method to ensure that 
 it correctly handles successful payment processing. You need to spy on the BankService to prevent 
 the actual bank communication and verify that processPayment() behaves as expected when the bank 
@@ -89,3 +102,89 @@ Call processPayment from PaymentProcessor.
 
 Verify that processPayment was called exactly once and that it processed the payment successfully.
 
+
+4.4. Exercise
+You are provided with the following class that needs to be unit tested:
+
+public class Cart {
+    private List<String> items = new ArrayList<>();
+
+    public void addItem(String item) {
+        items.add(item);
+    }
+
+    public String removeItem(int index) {
+        if(index >= 0 && index < items.size()) {
+            return items.remove(index);
+        }
+        return null;
+    }
+
+    // Other business logic methods...
+}
+
+Write a unit test for the removeItem method using Mockito to simulate the following scenario:
+
+When removeItem is called with an index, it should return the item at that index and remove it from the list.
+
+If the index is out of bounds, it should return null.
+
+
+The List used in the Cart class is to be mocked using Mockito, and you should use Answer to dynamically respond to the removeItem method call.
+
+4.5. Exercise
+You are testing a class named OrderProcessor that processes orders represented by a List<OrderItem>. The processOrders method in OrderProcessor modifies the list by adding an additional OrderItem indicating processing fees.
+
+Write a unit test for OrderProcessor using Mockito to spy on the processOrders method. Use ArgumentCaptor to capture the List<OrderItem> argument and verify that the list contains the added processing fee item after the method call.
+
+
+Classes to Implement:
+
+  public class OrderItem {
+      private String itemName;
+      private double price;
+
+      // Constructor, getters, and setters
+  }
+
+  
+
+  public class OrderProcessor {
+      public void processOrders(List<OrderItem> items) {
+          // Adds a processing fee item
+          items.add(new OrderItem("Processing Fee", 5.0));
+      }
+  }
+
+   
+
+Test Class Setup:
+
+Use JUnit for the test framework.
+
+Use Mockito to create a spy of OrderProcessor.
+
+Use ArgumentCaptor to capture the List<OrderItem> argument.
+
+
+Setup the Test Environment:
+
+Create a spy of OrderProcessor.
+
+Create a test list of OrderItem objects.
+
+Invoke the Method:
+
+ Call the processOrders method on the spy with the test list.
+
+Capture the Argument:
+
+Use ArgumentCaptor to capture the list passed to processOrders.
+
+Assert the Changes:
+
+Assert that the captured list includes the additional "Processing Fee" item.
+
+Verify that the size of the list is increased by one.
+
+(Optional) Verify specific properties of the added OrderItem.
