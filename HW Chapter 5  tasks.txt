@@ -30,5 +30,35 @@ An InvalidAlertException is thrown when sendAlert is invoked with a null message
 
 The send method on the gateway is never called when an InvalidAlertException is thrown.
 
+5.2 Exercise
+Test an abstract class that represents a Shape, which includes an abstract method calculateArea().
 
+
+public abstract class Shape {
+    private final String name;
+   
+    public Shape(String name) {
+        this.name = name;
+    }
+   
+    public String getName() {
+        return name;
+    }
+
+    public abstract double calculateArea();
+}
+
+Tasks:
+
+Create a mock for the Shape class using Mockito and stub the calculateArea() method to return a fixed value for testing.
+
+Write a JUnit 5 test that uses an anonymous subclass of Shape to test the getName() method functionality.
+
+Implement a parameterized test in JUnit 5 to verify the calculateArea() method against multiple sets of data for different shapes (e.g., Circle, Square).
+
+Use JUnit 5's @TestFactory to dynamically generate tests for different Shape subclasses that are not yet implemented, providing different values for name.
+
+Write a custom JUnit 5 extension that outputs the name of the shape before each test and validates that the name is not null or empty after each test.
+
+Apply the @Testable annotation to a method within an interface that Shape might implement and explain how it would assist in testing with JUnit 5.
 
