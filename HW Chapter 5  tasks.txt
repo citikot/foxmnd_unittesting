@@ -62,3 +62,34 @@ Write a custom JUnit 5 extension that outputs the name of the shape before each 
 
 Apply the @Testable annotation to a method within an interface that Shape might implement and explain how it would assist in testing with JUnit 5.
 
+5.3 Exercise
+Write a unit test for a class that contains a static utility method. Use Mockito to mock the static method, 
+and then use PowerMock to do the same. Observe the differences in approaches and limitations.
+
+
+Task 1: Using Mockito
+
+Create a Java class UtilityClass with a static method public static String getStatus().
+
+Use Mockito's mockStatic() within a try-with-resources block to mock the getStatus method.
+
+Stub the getStatus method to return "Mocked Status".
+
+Write a test that asserts the mocked value is returned when getStatus is called.
+
+
+Task 2: Using PowerMock Legacy way with Java 8 and JUnit 4.
+
+Annotate the test class with @RunWith(PowerMockRunner.class) and @PrepareForTest({UtilityClass.class}).
+
+Use PowerMockito.mockStatic(UtilityClass.class) to mock the getStatus method outside of a try-with-resources block.
+
+Stub the getStatus method as done previously.
+
+Write a test that verifies the getStatus method is called exactly once and returns the mocked value.
+
+
+Task 3: Reflection and Comparison
+
+After completing both tests, reflect on the usage, scope, and ease of testing with Mockito and PowerMock.
+
