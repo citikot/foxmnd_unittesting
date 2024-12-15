@@ -1,0 +1,72 @@
+Exercise
+In this exercise, you will finalize the logic of the Rock Paper Scissors game, ensuring all aspects of the game are covered. Your task is to implement the complete game logic, handle all possible scenarios, and ensure the game works as intended.
+
+
+You have developed a basic GameEngine for a Rock Paper Scissors game, which can handle player moves, decide winners for each round, and manage tie scenarios. Now, it's time to extend this functionality to cover the full game logic.
+
+
+Tasks:
+
+
+Implement Complete Game Rules:
+
+Finalize the decideWinner method in GameEngine to correctly determine the winner based on the traditional rules of Rock Paper Scissors.
+
+Ensure that all combinations of moves (Rock, Paper, Scissors) are handled correctly.
+
+Add Best of Three Rounds Functionality:
+
+Modify your game to play a 'best of three' rounds format.
+
+After three rounds, the game should declare the overall winner based on who won more rounds.
+
+Implement Player Score Tracking:
+
+Add functionality to keep track of each player's score throughout the game.
+
+After each round, update the scores and display them.
+
+Handle Invalid Moves:
+
+Enhance your game to handle invalid moves gracefully.
+
+If a player makes an invalid move, the game should prompt for a valid move.
+
+User Interaction:
+
+Implement a simple console-based interface for players to input their moves.
+
+Ensure the game communicates clearly with the players, displaying round results and overall game status.
+
+Testing:
+
+Write unit tests for each new functionality you implement.
+
+Ensure your tests cover edge cases, such as invalid inputs or tie scenarios in the best of three rounds.
+
+
+Stretch Goals (Optional):
+
+
+Add AI Opponent:
+
+Implement a simple AI opponent that randomly selects moves.
+
+Allow the player to choose between playing against another player or the AI.
+
+
+Refactor for Clean Code:
+
+Refactor your code to enhance readability, maintainability, and performance.
+
+Apply best practices you've learned, such as clean code principles and design patterns.
+
+
+Deliverables:
+
+A fully functional Rock Paper Scissors game with the described features.
+
+A comprehensive suite of unit tests covering the game logic.
+
+(Optional) Enhanced features as per the stretch goals.
+
