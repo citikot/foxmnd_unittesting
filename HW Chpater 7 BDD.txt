@@ -1,0 +1,82 @@
+Exercise
+You are provided with a Java class named OrderService, which is responsible for processing customer orders 
+in an online store. This service class depends on two other classes: InventoryManager (for checking stock 
+availability) and PaymentGateway (for processing payments).
+
+
+Write BDD-style unit tests for the OrderService class using JUnit 5 and BDDMockito. Your tests should cover
+the following scenarios:
+
+
+Test Order Processing Success:
+
+Given: The InventoryManager confirms items are in stock.
+
+When: An order is processed.
+
+Then: Ensure that the PaymentGateway processes the payment successfully.
+
+
+Test Order Failure Due to Out of Stock:
+
+Given: The InventoryManager indicates items are out of stock.
+
+When: An order is processed.
+
+Then: Verify that the order processing is unsuccessful and an appropriate exception is thrown.
+
+Test Order Failure Due to Payment Decline:
+
+Given: The InventoryManager confirms items are in stock, but the PaymentGateway declines the payment.
+
+When: An order is processed.
+
+Then: Ensure that the order processing is unsuccessful and an appropriate exception is thrown.
+
+
+// OrderService.java
+public class OrderService {
+    private InventoryManager inventoryManager;
+    private PaymentGateway paymentGateway;
+
+    public OrderService(InventoryManager inventoryManager, PaymentGateway paymentGateway) {
+        this.inventoryManager = inventoryManager;
+        this.paymentGateway = paymentGateway;
+    }
+
+    public boolean processOrder(Order order) {
+        if (inventoryManager.isInStock(order.getItem())) {
+            return paymentGateway.processPayment(order.getAmount());
+        } else {
+            throw new OutOfStockException("Item out of stock");
+        }
+    }
+}
+
+// InventoryManager.java
+public class InventoryManager {
+    public boolean isInStock(Item item) {
+        // Implementation
+    }
+}
+
+// PaymentGateway.java
+public class PaymentGateway {
+    public boolean processPayment(double amount) {
+        // Implementation
+    }
+}
+
+// Supporting classes: Order, Item, OutOfStockException
+
+
+
+Instructions:
+
+Use BDDMockito to mock the behavior of InventoryManager and PaymentGateway.
+
+Follow the "Given-When-Then" structure in your tests.
+
+Assert that the correct outcomes occur based on the given scenarios.
+
+Ensure your test names clearly describe the behavior being tested.
