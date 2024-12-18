@@ -1,0 +1,77 @@
+8.1 Exercise
+In this practical exercise, you will apply your knowledge of mutation testing using PITest. 
+You'll be working on a Java class responsible for calculating customer discounts based on various criteria. 
+Your task will be to write unit tests, run PITest, analyze the results, 
+and refine your tests based on the mutants generated.
+
+
+Java Class - DiscountCalculator:
+
+Assume a Java class DiscountCalculator with a method calculateDiscount(Customer customer) that applies discount rules based on customer attributes.
+
+public class DiscountCalculator {
+
+    public double calculateDiscount(Customer customer) {
+        double discount = 0.0;
+
+        if (customer.getYearsOfLoyalty() > 5) {
+            discount = Math.max(discount, 0.05); // 5% loyalty discount
+        }
+
+        if (customer.getAge() > 65) {
+            discount = Math.max(discount, 0.10); // 10% senior discount
+        }
+
+        if (customer.getPurchaseAmount() > 100) {
+            discount = Math.max(discount, 0.15); // 15% large purchase discount
+        }
+
+        return discount;
+    }
+}
+
+
+Initial Unit Tests:
+
+Write initial unit tests for the calculateDiscount method, covering basic scenarios.
+
+
+Task 1: Running PITest
+
+Run PITest on the DiscountCalculator class.
+
+Analyze the PITest report to identify survived mutants.
+
+
+Task 2: Analyzing Mutants
+
+Identify and list the survived mutants. For each survived mutant:
+
+Describe why the mutant survived.
+
+Hypothesize what this might indicate about the weaknesses in your current tests.
+
+
+Task 3: Refining Tests
+
+Based on your analysis, refine or add new tests to address the weaknesses exposed by the survived mutants.
+
+Ensure your new tests are meaningful and not just targeting the mutants without adding value to the test suite.
+
+
+Task 4: Re-running PITest
+
+Run PITest again with your refined tests.
+
+Compare the new results with the previous run and note any improvements or changes in the mutation score.
+
+
+Task 5: Reflection and Learning
+
+Reflect on the exercise and answer the following questions:
+
+How did the process of mutation testing with PITest improve the quality of your tests?
+
+Were there any challenges or surprises you encountered while refining your tests?
+
+
