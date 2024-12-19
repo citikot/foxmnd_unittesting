@@ -1,4 +1,4 @@
-8.1 Exercise
+8.1 Exercise Mutations
 In this practical exercise, you will apply your knowledge of mutation testing using PITest. 
 You'll be working on a Java class responsible for calculating customer discounts based on various criteria. 
 Your task will be to write unit tests, run PITest, analyze the results, 
@@ -74,4 +74,114 @@ How did the process of mutation testing with PITest improve the quality of your 
 
 Were there any challenges or surprises you encountered while refining your tests?
 
+
+
+
+8.2 ArcUnit Exercise
+
+Implement architectural tests for a Java application using ArchUnit to ensure adherence to specified architectural rules.
+
+Your task is to implement tests using ArchUnit to enforce architectural rules and ensure the integrity of the software design.
+
+Setup:
+
+Create a simple Java project with multiple packages and classes.
+
+    Package Structure:
+
+        com.onlinebookstore: Root package for the application.
+
+            controller: Contains classes responsible for handling web requests.
+
+            service: Contains business logic classes.
+
+            repository: Contains classes for database access.
+
+            model: Contains domain models used throughout the application.
+
+            config: Contains configuration classes.
+
+    Key Classes:
+
+        BookController: A class in the controller package to handle book-related web requests.
+
+        BookService: A class in the service package for business logic related to books.
+
+        BookRepository: A class in the repository package for database operations on books.
+
+        Book: A domain model class representing a book in the model package.
+
+
+Task 1: Enforcing Layer Dependencies
+
+    Identify two or more layers in your project (e.g., service, controller, repository).
+
+    Write an ArchUnit test to ensure that classes in the service layer do not directly depend on classes in the controller layer.
+
+
+Task 2: Validating Naming Conventions
+
+    Decide on a naming convention for your test classes (e.g., classes in the service layer should end with Service).
+
+    Implement an ArchUnit rule to validate that all classes in the service layer adhere to this naming convention.
+
+
+Task 3: Checking for Annotated Methods
+
+    Choose an annotation used in your project (e.g., @Transactional in the service layer).
+
+    Write an ArchUnit test to check that methods in the service layer are correctly annotated with @Transactional.
+
+
+Task 4: Preventing Cycle Dependencies
+
+    Analyze your project for potential cyclic dependencies.
+
+    Use ArchUnit to write a test that detects any cyclic dependencies between packages.
+
+
+Task 5: Custom Rule Creation
+
+    Identify a specific architectural rule relevant to your project (e.g., specific classes must implement a particular interface).
+
+    Create a custom ArchUnit rule to enforce this architectural decision.
+
+
+
+
+8.3 AsserJ Exercise
+
+Implement ArchUnit tests to verify that specific resources (e.g., domain models or Data Transfer Objects (DTOs)) 
+in a Java application are immutable.
+
+Setup:
+
+Use an existing Java project (for ArchUnit exercise) or create a new one. The project should include:
+
+    A Maven or Gradle build file with dependencies for JUnit 5 and ArchUnit.
+
+    A package with domain models or DTOs that are intended to be immutable.
+
+
+Tasks:
+
+    Identify Immutable Resources:
+
+        Select a package in your project that contains domain models or DTOs which should be immutable.
+
+    Write ArchUnit Test for Field Immutability:
+
+        Implement an ArchUnit test that checks all fields in the specified classes are final.
+
+    Write ArchUnit Test for Class Immutability:
+
+        Implement an ArchUnit test to ensure the classes are final themselves, preventing subclassing.
+
+    Write ArchUnit Test to Prevent Public Setters:
+
+        Implement an ArchUnit test to ensure there are no public setters in the specified classes, which contributes to mutability.
+
+    Optional: Check for Collections Immutability:
+
+        If any of the classes use collections, write an ArchUnit test to ensure these collections are not modifiable after the object's construction. This may involve ensuring collections are wrapped in unmodifiable wrappers at the constructor level.
 
